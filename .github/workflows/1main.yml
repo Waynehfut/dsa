@@ -29,5 +29,5 @@ jobs:
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
-#         run: yarn deploy
+        run: sh deploy.sh
 
