@@ -4,6 +4,7 @@ module.exports = {
         repo: 'waynehfut/dsa',
         repoLabel: '查看源码',
         editLinks: true,
+        docsBranch: 'main',
         editLinkText: '在Git上改善此页面！',
         displayAllHeaders: true,
         locales: {
