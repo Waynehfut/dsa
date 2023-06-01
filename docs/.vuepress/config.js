@@ -5,6 +5,7 @@ module.exports = {
         repoLabel: '查看源码',
         editLinks: true,
         docsBranch: 'main',
+        docsDir: 'docs',
         editLinkText: '在Git上改善此页面！',
         displayAllHeaders: true,
         locales: {
