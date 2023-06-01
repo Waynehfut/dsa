@@ -1,33 +1,18 @@
-name: deploy after push
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+name: Build and Deploy
+on: [push]
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@master
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - uses: actions/cache@v3
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        run: yarn --prefer-offline
-        
-      - name: Run deploy.sh
+      - name: vuepress-deploy
+        uses: jenkey2011/vuepress-deploy@master
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-        run: sh deploy.sh
-
+          TARGET_REPO: waynehfut/dsa
+          TARGET_BRANCH: gh-pages
+          BUILD_SCRIPT: yarn && yarn docs:build
+          BUILD_DIR: docs/.vuepress/dist
+          CNAME: https://dsa.waynehfut.com
