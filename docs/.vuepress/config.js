@@ -6,7 +6,7 @@ module.exports = {
         editLinks: true,
         docsBranch: 'main',
         docsDir: 'docs',
-        editLinkText: '在Git上改善此页面！',
+        editLinkText: '在Github上改善此页面！',
         displayAllHeaders: true,
         locales: {
             '/': {
