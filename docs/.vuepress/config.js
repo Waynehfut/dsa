@@ -8,6 +8,7 @@ module.exports = {
         docsBranch: 'main',
         docsDir: 'docs',
         editLinkText: '在Github上改善此页面！',
+        lastUpdated: 'Last Updated',//上次更新时间
         displayAllHeaders: true,
         locales: {
             '/': {
@@ -18,12 +19,8 @@ module.exports = {
                     {text: '主页', link: '/'},
                     {text: '课程', link: '/course/'},
                 ],
-                // sidebar: {
-                //     '/course/': ['', 'chap1','ext/git'],//课程列表
-                // },
                 sidebar: {
-                    // '/course/': cnJavaDsaIndex()
-                    '/course/': ['', '01/chap1','ext/git']
+                    '/course/': cnJavaDsaIndex(),
                 },
             },
             '/en/': {
@@ -52,6 +49,19 @@ module.exports = {
             title: 'Data Structure and Algorithm',
             description: 'Introduction for Data Structure and Algorithm'
         }
-    }
+    },
+    plugins: [//插件
+        '@vuepress/back-to-top',//回到顶部
+        '@vuepress/medium-zoom',//图片缩放
+        ['vuepress-plugin-code-copy', true],//代码复制
+        ['@vuepress/pwa', {
+            serviceWorker: true,
+            updatePopup: {
+                message: '有新内容更新啦~',
+                buttonText: '立即获取新内容，确定后稍后自动刷新'
+            }
+        }],
+    ]
+
 }
 
