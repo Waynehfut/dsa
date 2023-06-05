@@ -46,7 +46,7 @@
 1. 前往官网下载[VS Code](https://code.visualstudio.com/)
 2. 安装后新建文件（如：hello.java）
 
-   <img height="300" src="https://raw.githubusercontent.com/Waynehfut/blog/img/img/202306051119670.png"/>
+   <img alt="hello" height="300" src="https://raw.githubusercontent.com/Waynehfut/blog/img/img/202306051119670.png"/>
 
 3. 按提示安装Java环境
 
