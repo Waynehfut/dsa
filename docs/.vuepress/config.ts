@@ -8,6 +8,7 @@ import {
     sidebarZh,
 } from './config/'
 
+
 export default {
     locales: { //站点级别的多语言处理
         '/': {
