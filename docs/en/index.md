@@ -3,8 +3,10 @@ home: true
 heroImage: /assets/img/logo.png
 heroText: Data Structure and Algorithm
 tagline: Build the world with data and algorithm
-actionText: Learn →
-actionLink: /en/course/
+actions:
+  - text: Learn →
+    link: /course/
+    type: primary
 features:
   - title: Data
     details: Data is the basic unit that describes the core processes of a computer.
@@ -31,7 +33,7 @@ interesting algorithm to solve the real-world problem.
 
 ## Teach Assistant
 
-- [XX](site here) (Available in 3:00-5:00pm Friday, every teaching week)
+- [XX] (Available in 3:00-5:00pm Friday, every teaching week)
 
 ## Notices
 
