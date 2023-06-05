@@ -20,9 +20,9 @@
 name: docs
 
 on:
-  # 每当 push 到 master 分支时触发部署
+  # 每当 push 到 main 分支时触发部署
   push:
-    branches: [main]
+    branches: [ main ]
   # 手动触发部署
   workflow_dispatch:
 
@@ -37,26 +37,15 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           # 选择要使用的 node 版本
-          node-version: '18'
+          node-version: 18
+          # 缓存 pnpm 依赖
+          cache: 'yarn'
 
-      # 缓存 node_modules
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      # 如果缓存没有命中，安装依赖
-      - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+      - name: Install dependencies 📦
+        run: yarn install --frozen-lockfile
 
       # 运行构建脚本
       - name: Build VuePress site
@@ -73,4 +62,4 @@ jobs:
           build_dir: docs/.vuepress/dist
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
