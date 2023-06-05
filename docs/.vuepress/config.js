@@ -1,9 +1,10 @@
 const cnJavaDsaIndex = require('../course')
+const enJavaDsaIndex = require('../en/course')
 module.exports = {
     themeConfig: {
         logo: '/assets/img/logo.png',
         repo: 'waynehfut/dsa',
-        repoLabel: '查看源码',
+        repoLabel: 'Github',
         editLinks: true,
         docsBranch: 'main',
         docsDir: 'docs',
@@ -29,10 +30,10 @@ module.exports = {
                 ariaLabel: 'Select language',
                 nav: [ //顶部导航栏
                     {text: 'Home', link: '/en/'},
-                    {text: 'course', link: '/en/course/'},
+                    {text: 'Course', link: '/en/course/'},
                 ],
                 sidebar: {
-                    '/en/course/': ['', 'chap1'],//课程列表
+                    '/en/course/': enJavaDsaIndex(),//英文课程列表
                 },
             }
         }
