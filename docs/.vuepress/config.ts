@@ -6,7 +6,7 @@ import {
     navbarZh,
     sidebarEn,
     sidebarZh,
-} from './config/'
+} from './config/index.ts'
 
 
 export default {
