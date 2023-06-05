@@ -46,5 +46,5 @@ features:
 - 邮件 :[haowang@hfut.edu.cn](mailto:haowang@hfut.edu.cn)
 
 ::: slot footer
-MIT Licensed | Copyright © 2023-present by [Hao Wang](https://www.wayenhfut.com)
+MIT Licensed | Copyright © 2023-present by [Hao Wang](https://www.waynehfut.com)
 :::

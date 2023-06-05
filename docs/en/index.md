@@ -49,5 +49,5 @@ but not restrict the programming language.
 - Mail :[haowang@hfut.edu.cn](mailto:haowang@hfut.edu.cn)
 
 ::: slot footer
-MIT Licensed | Copyright © 2023-present [Hao Wang](https://wayenhfut.com)
+MIT Licensed | Copyright © 2023-present [Hao Wang](https://waynehfut.com)
 :::
