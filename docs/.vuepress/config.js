@@ -1,3 +1,4 @@
+const cnJavaDsaIndex = require('../course')
 module.exports = {
     themeConfig: {
         logo: '/assets/img/logo.png',
@@ -17,8 +18,12 @@ module.exports = {
                     {text: '主页', link: '/'},
                     {text: '课程', link: '/course/'},
                 ],
+                // sidebar: {
+                //     '/course/': ['', 'chap1','ext/git'],//课程列表
+                // },
                 sidebar: {
-                    '/course/': ['', 'chap1'],//课程列表
+                    // '/course/': cnJavaDsaIndex()
+                    '/course/': ['', '01/chap1','ext/git']
                 },
             },
             '/en/': {
