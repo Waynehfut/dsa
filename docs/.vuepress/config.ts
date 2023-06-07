@@ -1,7 +1,7 @@
 import {defaultTheme} from 'vuepress';
 // @ts-ignore
 import {mdEnhancePlugin} from "vuepress-plugin-md-enhance";
-import {commentPlugin} from "vuepress-plugin-comment2";
+
 
 import {
     // head,
@@ -38,7 +38,7 @@ export default {
                 selectLanguageText: '选择语言',
                 selectLanguageAriaLabel: '选择语言',
                 sidebar: sidebarZh,
-                editLinkText: '在 GitHub 上编辑此页',
+                editLinkText: '在 GitHub 上完善此页',
                 lastUpdatedText: '上次更新',
                 contributorsText: '贡献者',
                 tip: '提示',
@@ -79,14 +79,8 @@ export default {
             mathjax: true,
             //代码块
             codetabs: true,
+            mermaid: true,
         }),
-        commentPlugin({
-            provider: "Giscus",
-            repo: "waynehfut/dsa",
-            repoId: "R_kgDOJqIeRA",
-            category: "Announcements",
-            categoryId: "DIC_kwDOJqIeRM4CXCDD",
-        })
     ]
 }
 
