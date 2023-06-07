@@ -15,6 +15,13 @@ features:
     details: 结构描述了数据的组成方式
   - title: 算法
     details: 算法是对特定问题的解决方案
+footerHtml: true
+footer: <p>  MIT Licensed | Copyright © 2023-present by
+  <a href="https://www.waynehfut.com" target="_blank">Hao Wang<span>
+  </p>
+
+
+
 ---
 
 # 欢迎来到数据结构和算法课程！
@@ -50,5 +57,4 @@ features:
 - 邮件 :[haowang@hfut.edu.cn](mailto:haowang@hfut.edu.cn)
 
 
-MIT Licensed | Copyright © 2023-present by [Hao Wang](https://www.waynehfut.com)
 

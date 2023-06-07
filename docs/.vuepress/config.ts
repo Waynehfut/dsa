@@ -8,7 +8,7 @@ import {
     navbarZh,
     sidebarEn,
     sidebarZh,
-} from './config/index'
+} from "./config/index"
 
 
 export default {
@@ -68,6 +68,12 @@ export default {
         mdEnhancePlugin({
             // 使用 KaTeX 启用 TeX 支持
             katex: true,
+            figure: true,
+            imgSize: true,
+            container: true,
+            echarts: true,
+            // 启用图片懒加载
+            imgLazyload: true,
             // 使用 mathjax 启用 TeX 支持
             mathjax: true,
             //代码块
