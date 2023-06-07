@@ -1,5 +1,7 @@
-import {defaultTheme} from 'vuepress'
-import {backToTopPlugin} from '@vuepress/plugin-back-to-top'
+import {defaultTheme} from 'vuepress';
+// @ts-ignore
+import {mdEnhancePlugin} from "vuepress-plugin-md-enhance";
+
 import {
     // head,
     navbarEn,
@@ -63,8 +65,15 @@ export default {
         }
     }),
     plugins: [
-        backToTopPlugin(),
-    ],
+        mdEnhancePlugin({
+            // 使用 KaTeX 启用 TeX 支持
+            katex: true,
+            // 使用 mathjax 启用 TeX 支持
+            mathjax: true,
+            //代码块
+            codetabs: true,
+        })
+    ]
 }
 
 
