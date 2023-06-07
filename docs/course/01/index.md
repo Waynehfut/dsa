@@ -107,7 +107,7 @@ public class Person {
     }
 
     public String getGender() {
-        return gender == 0 ? "Man" : Woman ";
+        return gender == 0 ? "Man" : "Woman";
     }
 }
 
@@ -142,12 +142,11 @@ flowchart LR
     E --> E1["2"]
     E --> F["recu(1)"]
     F --> F1["2"]
-    F1 --*--> E1
+    F1 -- * --> E1
     F --> G["recu(0)"]
     G --> H["1"]
-    H --*--> F1
-    E1--=-->EN["4"]
-
+    H -- * --> F1
+    E1 --> J["4"]
 ```
 
 实际上我们可以看到的是，递归就是调用自身函数来运行函数，这一点普遍存在于现代的编程语言中，如：Java, C++/C/C#, Kotlin等语言中。
