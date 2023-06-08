@@ -7,6 +7,7 @@ export const sidebarZh: SidebarConfig = {
             children: [
                 '/course/readme.md',
                 '/course/01/index.md',
+                '/course/02/index.md',
 
             ],
 
