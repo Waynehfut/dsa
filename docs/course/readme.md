@@ -11,7 +11,6 @@
 ### Jetbrains系列
 
 1. 前往Jetbrains官网下载安装[toolbox](https://www.jetbrains.com/toolbox-app/)(推荐，便于后期更新IDE)
-
    ![Jetbrain Toolbox](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202306040911069.png)
    ![安装](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202306040914227.png)
 2. 启动后安装Intellij IDEA(Java)或CLion(C/C++)等对应语言的IDE即可
