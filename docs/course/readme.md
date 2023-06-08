@@ -18,7 +18,7 @@
 
    ![启动](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202306040916938.png)
 
-::: tip
+::: note
 这里以Java为例
 :::
 
@@ -57,7 +57,7 @@
 
    <img alt="VS Code验证"  src="https://raw.githubusercontent.com/Waynehfut/blog/img/img/202306051131938.png"/>
 
-::: info
+::: note
 借助插件，VS Code还可以实现很多强大的功能，后期有机会单独说一下。
 :::
 

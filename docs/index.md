@@ -52,6 +52,10 @@ footer: <p>  MIT Licensed | Copyright © 2023-present by
 3. Weiss,Mark Allen.Data Structures and Algorithm Analysis in C++, 3rd Edition.Pearson Addison-Wesley,2006.
 4. Weiss,Mark Allen.Data Structures and Algorithm Analysis in Java.Pearson,2012.
 
+## 致谢
+
+本文档的撰写过程中大量参考了前述的书籍，以及[廖雪峰的官方网站](https://www.liaoxuefeng.com/)等站点，在此表示感谢！
+
 ## 联系
 
 - 邮件 :[haowang@hfut.edu.cn](mailto:haowang@hfut.edu.cn)
