@@ -3,13 +3,7 @@ import {defaultTheme} from 'vuepress';
 import {mdEnhancePlugin} from "vuepress-plugin-md-enhance";
 
 
-import {
-    // head,
-    navbarEn,
-    navbarZh,
-    sidebarEn,
-    sidebarZh,
-} from "./config/configBar"
+import {navbarEn, navbarZh, sidebarEn, sidebarZh,} from "./config/configBar"
 
 
 export default {
@@ -20,11 +14,12 @@ export default {
             description: '本站介绍了数据结构与算法课程的授课细节'
 
         },
-        '/en/': {
-            lang: 'en-US',
-            title: 'Data Structure and Algorithm',
-            description: 'Introduction for Data Structure and Algorithm'
-        }
+        //有机会再整英文
+        // '/en/': {
+        //     lang: 'en-US',
+        //     title: 'Data Structure and Algorithm',
+        //     description: 'Introduction for Data Structure and Algorithm'
+        // }
     },
     theme: defaultTheme({//主题配置
         // 默认主题配置

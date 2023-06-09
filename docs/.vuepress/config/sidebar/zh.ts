@@ -12,10 +12,14 @@ export const sidebarZh: SidebarConfig = {
             ],
 
         },
+
+    ],
+    '/ext/':[//
         {
             text: '课程拓展',
             children: [
-                '/course/ext/git.md',
+                '/ext/index.md',
+                '/ext/debugWithSSH.md'
             ]
         }
     ]

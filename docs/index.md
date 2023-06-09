@@ -17,7 +17,7 @@ features:
     details: 算法是对特定问题的解决方案
 footerHtml: true
 footer: <p>  MIT Licensed | Copyright © 2023-present by
-  <a href="https://www.waynehfut.com" target="_blank">Hao Wang<span>
+  <a href="https://www.waynehfut.com" target="_blank">Hao Wang</a> | 转载请注明出处 
   </p>
 
 
@@ -48,6 +48,7 @@ footer: <p>  MIT Licensed | Copyright © 2023-present by
 ## 参考书
 
 1. 严蔚敏, 吴伟民.数据结构: C语言版.中国:清华大学出版社,1997.
+2. Thomas H.Cormen 等著, 殷建平等译, 算法导论，中国:机械工业出版社, 2012.
 2. 邓俊辉.数据结构与算法(Java语言描述).中国,机械工业出版社,2006.
 3. Weiss,Mark Allen.Data Structures and Algorithm Analysis in C++, 3rd Edition.Pearson Addison-Wesley,2006.
 4. Weiss,Mark Allen.Data Structures and Algorithm Analysis in Java.Pearson,2012.

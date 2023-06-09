@@ -62,6 +62,6 @@
 
 ## Git使用
 
-参见[20分钟Git基础操作](ext/git.md)
+参见[20分钟Git基础操作](../ext/index.md)
 
             

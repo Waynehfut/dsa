@@ -12,7 +12,7 @@ export const sidebarEn: SidebarConfig = {
         {
             text: 'Course Extension',
             children: [
-                '/en/course/ext/git.md',
+                '/en/course/ext/index.md',
             ]
         }
     ]
