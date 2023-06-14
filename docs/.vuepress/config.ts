@@ -68,6 +68,7 @@ export default {
             imgSize: true,
             container: true,
             echarts: true,
+            footnote: true,
             // 启用图片懒加载
             imgLazyload: true,
             // 使用 mathjax 启用 TeX 支持
@@ -75,6 +76,7 @@ export default {
             //代码块
             codetabs: true,
             mermaid: true,
+            mark: true,
         }),
     ]
 }
