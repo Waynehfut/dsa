@@ -8,6 +8,8 @@ export const sidebarZh: SidebarConfig = {
                 '/course/readme.md',
                 '/course/01/index.md',
                 '/course/02/index.md',
+                '/course/03/index.md',
+                '/course/04/index.md',
 
             ],
 
