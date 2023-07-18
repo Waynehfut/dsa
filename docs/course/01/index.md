@@ -279,7 +279,7 @@ $。但是实际代码中
 :::
 
   我们可以从下图看出时间复杂度对计算负载的影响，随着计算规模（横轴）的增大，时间复杂度更大的程序将面临爆发式的执行次数（纵轴）增长。
-  ![时间复杂度](https://raw.githubusercontent.com/Waynehfut/blog/img/img/202306081651615.png)
+  ![时间复杂度](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306081651615.png)
   常见的复杂度计数包括：$O(logN),O(N!),O(NlogN)$等，在后续的课程中，我们将结合实际数据结构和算法进行深入分析。
 
 :::info 拓展阅读
