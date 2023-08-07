@@ -1,26 +1,25 @@
 # :computer: 使用SSH进行代码调试
-toc: true
-date: 2021-09-15 15:46:09
-categories: 代码
 
-
-大多数情况下，我们并不需要服务器的 GUI 来占用宝贵的 GPU 资源，同时远程桌面的方式给开发带来了诸多不可预见的错误，虽然 SFTP 和 X11 转发的方式使得在本地编辑代码很方便，但是对于 debug 等操作却没法很好的完成，被迫开远程桌面进行 debug 。为此，本篇将以 IDEA 家族的 IDE 为例简要介绍如何使用 SSH 进行远程服务器的代码调试，以避免手动同步代码导致的潜在风险。
-
-<!-- more -->
+大多数情况下，我们并不需要服务器的 GUI 来占用宝贵的 GPU 资源，同时远程桌面的方式给开发带来了诸多不可预见的错误，虽然 SFTP 和
+X11 转发的方式使得在本地编辑代码很方便，但是对于 debug 等操作却没法很好的完成，被迫开远程桌面进行 debug 。为此，本篇将以
+IDEA 家族的 IDE 为例简要介绍如何使用 SSH 进行远程服务器的代码调试，以避免手动同步代码导致的潜在风险。
 
 ## 配置 SSH
 
-首先，你要有个具有 SSH 访问权限的服务器，关于如何部署 SSH，这里不再赘述。测试是否可以链接到 SSH 服务器，可以使用`ssh -T <Username>@<IP>`的命令，即可登录。
+首先，你要有个具有 SSH 访问权限的服务器，关于如何部署 SSH，这里不再赘述。测试是否可以链接到 SSH
+服务器，可以使用`ssh -T <Username>@<IP>`的命令，即可登录。
 
 ![re ssh](https://raw.githubusercontent.com/Waynehfut/blog/img/img20210915164533.png)
 
-有了这个基础，即可配置 IDE 中的 SSH 了，以 IDEA 的 PyCharm 为例，打开`File->Setting->Tools->SSH Configurations`输入相应的主机地址、端口、用户名、密码后，即可在 IDE 中配置远程的 SSH 服务器，用以同步代码和远程调试。
+有了这个基础，即可配置 IDE 中的 SSH 了，以 IDEA 的 PyCharm 为例，打开`File->Setting->Tools->SSH Configurations`
+输入相应的主机地址、端口、用户名、密码后，即可在 IDE 中配置远程的 SSH 服务器，用以同步代码和远程调试。
 
 ![ssh conf](https://raw.githubusercontent.com/Waynehfut/blog/img/img20210915164347.png)
 
 ## 增加远程环境
 
-其次，我们的主要目的是将远程服务器作为我们的调试或部署环境，因此还需要为代码添加远程解释器等环境。以 Python 为例，我们打开`Setting->Project:<Project Name>->Python Interpreter`在右侧下拉选择 Show All.
+其次，我们的主要目的是将远程服务器作为我们的调试或部署环境，因此还需要为代码添加远程解释器等环境。以 Python
+为例，我们打开`Setting->Project:<Project Name>->Python Interpreter`在右侧下拉选择 Show All.
 
 ![add](https://raw.githubusercontent.com/Waynehfut/blog/img/img20210915165246.png)
 
@@ -36,7 +35,8 @@ categories: 代码
 
 ![modify](https://raw.githubusercontent.com/Waynehfut/blog/img/img20210915165522.png)
 
-调整完解释器路径后，还需要注意当前项目的映射关系，一般情况下，项目的根目录会映射到/tmp 目录下，也就意味着，一段时间后，代码会被清理掉，如果想保存代码到特定位置，可以在此处修改文件映射。
+调整完解释器路径后，还需要注意当前项目的映射关系，一般情况下，项目的根目录会映射到/tmp
+目录下，也就意味着，一段时间后，代码会被清理掉，如果想保存代码到特定位置，可以在此处修改文件映射。
 
 ![choose path](https://raw.githubusercontent.com/Waynehfut/blog/img/img20210915165651.png)
 
@@ -62,7 +62,9 @@ categories: 代码
 
 ## 应规避的风险行为
 
-- 要注意的是，平时使用时，默认情况下是同步所有文件到之前的映射中的。因此，当存在文件不需要在本地保存或大量日志文件不需要同步时，请在`Settings->Build,Execution,Deployment->Deployment`中找到当前的解释器，选择`Excluded Paths`添加不需要进行同步的路径。
+-
+要注意的是，平时使用时，默认情况下是同步所有文件到之前的映射中的。因此，当存在文件不需要在本地保存或大量日志文件不需要同步时，请在`Settings->Build,Execution,Deployment->Deployment`
+中找到当前的解释器，选择`Excluded Paths`添加不需要进行同步的路径。
 
 ![Ex path](https://raw.githubusercontent.com/Waynehfut/blog/img/img20210915170623.png)
 

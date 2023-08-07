@@ -25,7 +25,7 @@
 
    ![不导入设置](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306040919417.png)
 4. 如果下载了Ultimate版本，则需要登录账号验证权限，这里我们推荐使用教育网邮箱注册，可以免费试用，具体细节
-   [参见此处](https://www.jetbrains.com.cn/en-us/community/education/#students)
+   [参见此处](https://www.jetbrains.com.cn/community/education/#students)
 5. 登录完成后，即可来到主页面，点击New Project，选择New Project.
 
    ![主页面](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306040921172.png)
@@ -40,7 +40,9 @@
 
    ![Hello World](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306051043239.png)
 
-### VS Code
+### Visual Studio Code
+
+当然我们可以选择无需订阅的VS Code
 
 1. 前往官网下载[VS Code](https://code.visualstudio.com/)
 2. 安装后新建文件（如：hello.java）
@@ -57,10 +59,12 @@
    <img alt="VS Code验证"  src="https://raw.githubusercontent.com/Waynehfut/img/img/img/202306051131938.png"/>
 
 ::: note
-借助插件，VS Code还可以实现很多强大的功能，后期有机会单独说一下。
+借助插件，VS Code还可以实现很多强大的功能，参见[插件市场](https://marketplace.visualstudio.com/vscode)。
 :::
 
 ## Git使用
+
+此外，我们经常会遇到代码需要保存或者修改版本的情况，这里拓展介绍一下Git的使用
 
 参见[20分钟Git基础操作](../ext/index.md)
 
