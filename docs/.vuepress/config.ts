@@ -7,6 +7,7 @@ import {navbarEn, navbarZh, sidebarEn, sidebarZh,} from "./config/configBar"
 
 
 export default {
+    head: [['link', { rel: 'icon', href: '/assets/img/logo.png' }]],
     locales: { //站点级别的多语言处理
         '/': {
             lang: 'zh-CN',

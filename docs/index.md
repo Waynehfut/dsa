@@ -1,6 +1,6 @@
 ---
 home: true
-title: Home
+title: 主页
 heroImage: /assets/img/logo.png
 heroText: 数据结构与算法
 tagline: 使用数据与算法描述现实问题

@@ -1,3 +1,4 @@
+import java.util.Collection;
 public class Main {
     public static void main(String[] args) {
         int[] arr = new int[10];
@@ -8,3 +9,4 @@ public class Main {
         arr = expArr;
     }
 }
+
