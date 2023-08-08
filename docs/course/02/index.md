@@ -145,7 +145,7 @@ circular linked list)。
 
 ![双向循环链表](https://raw.githubusercontent.com/Waynehfut/img/img/img/202308071127350.png)
 
-## 基于 Java Collection API 的表
+## Java Collection 和 Iterator API
 
 在讲述的表及相关变体后，进一步我们来看下如何使用 Java 语言进行数据结构的实现。前述提到[抽象数据类型](index.md/#抽象数据类型)
 实际上定义的是数据的逻辑结构，而具体 ADT 在 Java 中如何表示，则需要利用到 Java 的 Collection API。
@@ -168,17 +168,24 @@ public interface Collection<AnyType> extends Iterable<AnyType>{
 
 我们可以看到，在 Collection API 中，使用了泛型，并从`Iterable`接口中继承了接口。其中常见需要实现的方法有：`size`表示获得集合大小，`isEmpty`表示集合是否为空，`clear`表示清空集合，`contains`表示集合中是否包含某个数据，`add`表示增加某个数据，`remove`表示移除某个数据。需要注意的是，在这里还包含一个返回 Iterator 对象的方法，从而便于更好的调用 Iterator 接口中高效的[迭代方法](https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html)。
 
-### Iterator 接口
+### Iterator API 接口
 
 要实现上述`Collection`接口必须要提供一个名为`iterator`的方法，它返回了一个`Iterator`对象，而`Iterator`接口作为`java.util`包中定义的接口，其基本操作如下：
+
 ```java
 public interface Iterator<AnyType>{
     boolean hasNext();//是否有后继
     AnyType next();//向后移一位
-    void remove();//删除后续数据
+    void remove();//删除当前数据
 }
 ```
 
-#### 注释
+其中`hasNext`是判断当前对象是否有后继，`next`表示获得集合的下一项，第一次调用时获得的是第一项，第二次则是第二项，以此类推，`remove`表示删除由`next`返回的最新一项，要注意的是这个方法只有在`next`方法调用后才可以被合法的调用，否则会返回`IllegalStateException`异常。这与`Collection`接口的`remove`方法有所区别。另外还需要注意的是，如果当前`Iterator`对象出现了结构上的变化，例如使用了`add`，`remove`等方法后，迭代器将发生结构变化，此时如果再使用迭代器时将抛出`UnsupportedOperationException`异常。为此，一般只在需要使用迭代器时，才获取当前的迭代器对象。
+
+## List, ArrayList 和 LinkedList 类
+
+在了解了`Collection`和`Iterator`接口后
+
+#### 注
 
 [^1]: 在中文教程不同版本的表述中，表也有被称之为列表、线性表，但本质上都是对数据结构的逻辑层面的表述，为避免歧义，我们将统称为表
