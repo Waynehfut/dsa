@@ -21,7 +21,8 @@ public class Main {
 这个代码定义了一个数组，先输出了数组的第二个元素，并修改了第二个元素。这就涉及到了 Java 中最基础的数据结构——数组。
 可以看出，数组中是一系列同类数据的集合，并且有其规定的次序，当然数组的可操作性是有限的，Java 中还有包括更高级的`Array`类
 来实现更高级的操作。但本质上这些数据结构都包含了一些常见基本的操作，如：增加、删除、修改等。实际上反映了 ==_物理上_== 数据如何存储。
-为了更好地理解数据结构本身的性质，我们需要在逻辑上定义相应的数据结构，这里首先引入抽象数据类型(Abstract Data Type, ADT)的概念。
+为了更好地理解数据结构本身的性质，我们需要在逻辑上定义相应的数据结构，这里首先引入抽象数据类型(Abstract Data Type, ADT)
+的概念。
 
 ## 抽象数据类型
 
@@ -64,7 +65,8 @@ flowchart LR
 
 :::info 注意
 对于顺序表这个概念，在部分的以 Java 为编码语言教材中并没有刻意强调，与 C/C++ 等语言相比，由于 Java
-的虚拟机机制，数据在内存中"顺序"并没有如 C/C++ 中体现那么明显。因此大多数情况下会将数组等同于顺序表这一逻辑结构的物理实现。但在 C/C++中对于内存的管理则更加标准，
+的虚拟机机制，数据在内存中"顺序"并没有如 C/C++ 中体现那么明显。因此大多数情况下会将数组等同于顺序表这一逻辑结构的物理实现。但在
+C/C++中对于内存的管理则更加标准，
 顺序表中的"顺序"体现的更加明显
 :::
 
@@ -80,16 +82,19 @@ for (int i = 0; i < arr.length; i++) {
 arr = expArr;
 ```
 
-更为极端的是，如果需要对数组进行插入和删除的操作，最差的情况下(例如在首位插入或删除元素)甚至需要遍历整个数组，这无疑是不合适的，为此，更为灵活的方式是使用**链表**。
+更为极端的是，如果需要对数组进行插入和删除的操作，最差的情况下(例如在首位插入或删除元素)甚至需要遍历整个数组，这无疑是不合适的，为此，更为灵活的方式是使用
+**链表**。
 
 ### 链表
 
 链表(linked list)是一种类似链条一般的表，一般来说是有一系列节点组成，并且在内存中不必完全相连的数据所组成表集合。
-每一个节点都包含该元素值和到包含该元素后继节点的链接，一般称之为 next，最后一个节点后继指向 null。 下图即展示了一个长度为 4 的链表，
+每一个节点都包含该元素值和到包含该元素后继节点的链接，一般称之为 next，最后一个节点后继指向 null。 下图即展示了一个长度为 4
+的链表，
 
 ![单链表](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306191700342.png)
 
-我们可以看出，每个元素都有一个直接后继 next 指向下一个元素，而最后一个元素，设置了一个标识，表示没有后继，一般是 null。而对于链表数据操作时，进行
+我们可以看出，每个元素都有一个直接后继 next 指向下一个元素，而最后一个元素，设置了一个标识，表示没有后继，一般是
+null。而对于链表数据操作时，进行
 数据的查找和打印数据时，和数组的操作是一致的，而对于依据下标查找时，单链表的效率显然不如数组。相对于数组来说，链表的优势主要是增删的优势更大，
 即找到相应的位置，调整 next 指向位置即可。
 
@@ -100,9 +105,11 @@ arr = expArr;
 ![删除节点](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306191719823.png)
 
 :::info 注意
-可以看出一个更为优雅的后续操作是，及时的释放$A_2$所占用的存储空间，由于 JVM 内建的内存回收机制，这一操作是在 Java 内存回收过程中完成的，
+可以看出一个更为优雅的后续操作是，及时的释放$A_2$所占用的存储空间，由于 JVM 内建的内存回收机制，这一操作是在 Java
+内存回收过程中完成的，
 参见[Java Garbage Collection Basics | Oracle](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html)
-而对于 C/C++语言而言，则需要手动删除节点，参见[C++ Program for Deleting a Node in a Linked List | Geeksforgeeks.org](https://www.geeksforgeeks.org/cpp-program-for-deleting-a-node-in-a-linked-list/)
+而对于
+C/C++语言而言，则需要手动删除节点，参见[C++ Program for Deleting a Node in a Linked List | Geeksforgeeks.org](https://www.geeksforgeeks.org/cpp-program-for-deleting-a-node-in-a-linked-list/)
 :::
 
 对于增加节点而言，首先得有一个新插入的节点，假设我们新增一个$A_4$节点在$A_1$和$A_2$之间，那在新建这个待插入对象后，首先应将新建节点的后继
@@ -137,7 +144,9 @@ circular linked list)。
 
 #### 双向链表
 
-但是如果我们对问题 2.1 做一个调整，每次报数都和上次的顺序相反，那循环链表的就难以适用了。为了知晓不同方向的前后关系，可以考虑的一种方式是，为每个节点做个前驱链接 (previous)，那循环链表则又可以进一步增强灵活性，我们称这样的链表为双向循环链表。当然，也可以为单链表增加这样的前驱指向，则可以得到双向链表。
+但是如果我们对问题 2.1
+做一个调整，每次报数都和上次的顺序相反，那循环链表的就难以适用了。为了知晓不同方向的前后关系，可以考虑的一种方式是，为每个节点做个前驱链接 (
+previous)，那循环链表则又可以进一步增强灵活性，我们称这样的链表为双向循环链表。当然，也可以为单链表增加这样的前驱指向，则可以得到双向链表。
 
 ![双向链表](https://raw.githubusercontent.com/Waynehfut/img/img/img/202308071125423.png)
 
@@ -147,12 +156,14 @@ circular linked list)。
 
 ## Java Collection 和 Iterator API
 
-在讲述的表及相关变体后，进一步我们来看下如何使用 Java 语言进行数据结构的实现。前述提到[抽象数据类型](index.md/#抽象数据类型)
+在讲述的表及相关变体后，进一步我们来看下如何使用 Java
+语言进行数据结构的实现。前述提到[抽象数据类型](index.md/#抽象数据类型)
 实际上定义的是数据的逻辑结构，而具体 ADT 在 Java 中如何表示，则需要利用到 Java 的 Collection API。
 
 ### Collection API 接口
 
-Collection API 位于`java.util`包中，中文一般称之为集合，它存储了一组相同的对象，并且相关操作在`Collection`接口中抽象得到，下述是部分`Collection`接口中常用的待实现的方法。
+Collection API 位于`java.util`包中，中文一般称之为集合，它存储了一组相同的对象，并且相关操作在`Collection`
+接口中抽象得到，下述是部分`Collection`接口中常用的待实现的方法。
 
 ```java
 public interface Collection<AnyType> extends Iterable<AnyType>{
@@ -166,11 +177,15 @@ public interface Collection<AnyType> extends Iterable<AnyType>{
 }
 ```
 
-我们可以看到，在 Collection API 中，使用了泛型，并从`Iterable`接口中继承了接口。其中常见需要实现的方法有：`size`表示获得集合大小，`isEmpty`表示集合是否为空，`clear`表示清空集合，`contains`表示集合中是否包含某个数据，`add`表示增加某个数据，`remove`表示移除某个数据。需要注意的是，在这里还包含一个返回 Iterator 对象的方法，从而便于更好的调用 Iterator 接口中高效的[迭代方法](https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html)。
+我们可以看到，在 Collection API 中，使用了泛型，并从`Iterable`接口中继承了接口。其中常见需要实现的方法有：`size`
+表示获得集合大小，`isEmpty`表示集合是否为空，`clear`表示清空集合，`contains`表示集合中是否包含某个数据，`add`
+表示增加某个数据，`remove`表示移除某个数据。需要注意的是，在这里还包含一个返回 Iterator 对象的方法，从而便于更好的调用
+Iterator 接口中高效的[迭代方法](https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html)。
 
 ### Iterator API 接口
 
-要实现上述`Collection`接口必须要提供一个名为`iterator`的方法，它返回了一个`Iterator`对象，而`Iterator`接口作为`java.util`包中定义的接口，其基本操作如下：
+要实现上述`Collection`接口必须要提供一个名为`iterator`的方法，它返回了一个`Iterator`对象，而`Iterator`接口作为`java.util`
+包中定义的接口，其基本操作如下：
 
 ```java
 public interface Iterator<AnyType>{
@@ -180,11 +195,43 @@ public interface Iterator<AnyType>{
 }
 ```
 
-其中`hasNext`是判断当前对象是否有后继，`next`表示获得集合的下一项，第一次调用时获得的是第一项，第二次则是第二项，以此类推，`remove`表示删除由`next`返回的最新一项，要注意的是这个方法只有在`next`方法调用后才可以被合法的调用，否则会返回`IllegalStateException`异常。这与`Collection`接口的`remove`方法有所区别。另外还需要注意的是，如果当前`Iterator`对象出现了结构上的变化，例如使用了`add`，`remove`等方法后，迭代器将发生结构变化，此时如果再使用迭代器时将抛出`UnsupportedOperationException`异常。为此，一般只在需要使用迭代器时，才获取当前的迭代器对象。
+其中`hasNext`是判断当前对象是否有后继，`next`
+表示获得集合的下一项，第一次调用时获得的是第一项，第二次则是第二项，以此类推，`remove`表示删除由`next`
+返回的最新一项，要注意的是这个方法只有在`next`方法调用后才可以被合法的调用，否则会返回`IllegalStateException`
+异常。这与`Collection`接口的`remove`方法有所区别。另外还需要注意的是，如果当前`Iterator`
+对象出现了结构上的变化，例如使用了`add`，`remove`
+等方法后，迭代器将发生结构变化，此时如果再使用迭代器时将抛出`UnsupportedOperationException`异常。为此，一般只在需要使用迭代器时，才获取当前的迭代器对象。
 
 ## List, ArrayList 和 LinkedList 类
 
-在了解了`Collection`和`Iterator`接口后
+在了解了`Collection`和`Iterator`接口后，具体到本章所提到的表（List），在 Java
+中是以什么形式表示的。它同样继承于`java.util.Collection`接口，除了`Collection`的基本操作外，还有外加的其他方法。其中部分方法如下：
+
+### List 的基本操作
+
+```java
+public interface List<AnyType> extends Collection<AnyType>{
+    AnyType get(int idx); //获取某个下标对应的元素
+    AnyType set(int idx, AnyType newVal); // 为某个下标设置对应值
+    void add(int idx, AnyType x); //在某个下标增加某个元素
+    void remove(int idx); //移除某下标的对应元素
+    ListIterator<AnyType> listIterator(int pos); //List迭代器
+}
+```
+
+:::info 注意
+在 List 接口中，远远不止上述方法，同时在`Collection`的方法也有同名方法，请注意鉴别。另外 List 的下标与数组类似，也是从 0 开始计数。
+:::
+
+而在具体地实战中，主要有两种主流的实现方式：其一是使用`ArrayList`类来实现，其优势是`get`和`set`的调用耗费的是常数级复杂度，但是其插入和删除代价较大，可以直观的理解为`ArrayList`是类似数组一样的表，与顺序表相似；其二是使用`LinkedList`，它实际上提供了类似双链表的实现，这就为插入和删除节点带来了非常大的优势，但显而易见的，由于链式存储的特性，使得`get`和`set`等方法的时间复杂度要高于`ArrayList`。
+
+### ArrayList 类的具体实现
+
+那在本节，就具体来看下如何手写一个`ArrayList`类，为了避免和类库中的类重名，我们将该类命名为`MyArrayList`，为了简化表述，这里仅提供基础的`ArrayList`接口，不涉及`Collection`或`List`的方法。
+
+### LinkedList 类的具体实现
+
+那在本节，就具体来看下如何手写一个`LinkedList`类，为了避免和类库中的类重名，我们将该类命名为`MyLinkedList`，为了简化表述，这里仅提供基础的`LinkedList`接口，不涉及`Collection`或`List`的方法。此时，我们需要思考几个问题：(1)如何构建链表关系；(2)如何维护链表节点；(3)如何控制头尾。
 
 #### 注
 
