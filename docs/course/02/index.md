@@ -223,15 +223,117 @@ public interface List<AnyType> extends Collection<AnyType>{
 在 List 接口中，远远不止上述方法，同时在`Collection`的方法也有同名方法，请注意鉴别。另外 List 的下标与数组类似，也是从 0 开始计数。
 :::
 
-而在具体地实战中，主要有两种主流的实现方式：其一是使用`ArrayList`类来实现，其优势是`get`和`set`的调用耗费的是常数级复杂度，但是其插入和删除代价较大，可以直观的理解为`ArrayList`是类似数组一样的表，与顺序表相似；其二是使用`LinkedList`，它实际上提供了类似双链表的实现，这就为插入和删除节点带来了非常大的优势，但显而易见的，由于链式存储的特性，使得`get`和`set`等方法的时间复杂度要高于`ArrayList`。
+而在具体地实战中，主要有两种主流的实现方式：其一是使用`ArrayList`类来实现，其优势是`get`和`set`的调用耗费的是常数级复杂度，但是其插入和删除代价较大，可以直观的理解为`ArrayList`是类似数组一样的顺序表；其二是使用`LinkedList`，它实际上提供了类似双链表的实现，这就为插入和删除节点带来了非常大的优势，但显而易见的，由于链式存储的特性，使得`get`和`set`等方法的时间复杂度要高于`ArrayList`。
 
 ### ArrayList 类的具体实现
 
-那在本节，就具体来看下如何手写一个`ArrayList`类，为了避免和类库中的类重名，我们将该类命名为`MyArrayList`，为了简化表述，这里仅提供基础的`ArrayList`接口，不涉及`Collection`或`List`的方法。
+在本节，就具体来看下如何手写一个`ArrayList`类，为了避免和类库中的类重名，我们将该类命名为`MyArrayList`，为了简化表述，这里仅提供基础的`ArrayList`接口，不涉及`Collection`或`List`的方法。
+
+我们再次回顾一下前述内容对顺序表的定义，实际上最简单的办法是使用数组的方式实现。为此，会涉及到基本数组的维护、访存、修改、遍历等操作
+
+```java
+public class MyArrayList<AnyType> implements Iterable<AnyType> {
+    private static final int DEFAULT_CAPACITY = 10;
+    private int theSize;
+    private AnyType[] theItems;
+
+    public MyArrayList() {
+        doClear();
+    }
+
+    public void clear() {
+        doClear();
+    }
+
+    private void doClear() {
+        theSize = 0;
+        ensureCapacity(DEFAULT_CAPACITY);
+    }
+
+    public int size() {
+        return theSize;
+    }
+
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
+    public void trimToSize() {
+        ensureCapacity(size());
+    }
+
+    public AnyType get(int idx) {
+        if (idx < 0 || idx >= size())
+            throw new ArrayIndexOutOfBoundsException();
+        return theItems[idx];
+    }
+
+    public AnyType set(int idx, AnyType newVal) {
+        if (idx < 0 || idx >= size())
+            throw new ArrayIndexOutOfBoundsException();
+        AnyType old = theItems[idx];
+        theItems[idx] = newVal;
+        return old;
+    }
+
+    public void ensureCapacity(int newCapacity) {
+        if (newCapacity < theSize)
+            return;
+        AnyType[] old = theItems;
+        theItems = (AnyType[]) new Object[newCapacity];
+        for (int i = 0; i < size(); i++)
+            theItems[i] = old[i];
+    }
+
+    public boolean add(AnyType x) {
+        add(size(), x);
+        return true;
+    }
+
+    public void add(int idx, AnyType x) {
+        if (theItems.length == size())
+            ensureCapacity(size() * 2 + 1);
+        for (int i = theSize; i > idx; i--)
+            theItems[i] = theItems[i - 1];
+        theItems[idx] = x;
+        theSize++;
+    }
+
+    public AnyType remove(int idx) {
+        AnyType removeItem = theItems[idx];
+        for (int i = idx; i < size() - 1; i++)
+            theItems[i] = theItems[i + 1];
+        theSize--;
+        return removeItem;
+    }
+
+    public java.util.Iterator<AnyType> iterator() {
+        return new ArrayListIterator();
+    }
+
+    private class ArrayListIterator implements java.util.Iterator<AnyType> {
+        private int current = 0;
+
+        public boolean hasNext() {
+            return current < size();
+        }
+
+        public AnyType next() {
+            if (!hasNext())
+                throw new java.util.NoSuchElementException();
+            return theItems[current++];
+        }
+
+        public void remove() {
+            MyArrayList.this.remove(--current);
+        }
+    }
+}
+```
 
 ### LinkedList 类的具体实现
 
-那在本节，就具体来看下如何手写一个`LinkedList`类，为了避免和类库中的类重名，我们将该类命名为`MyLinkedList`，为了简化表述，这里仅提供基础的`LinkedList`接口，不涉及`Collection`或`List`的方法。此时，我们需要思考几个问题：(1)如何构建链表关系；(2)如何维护链表节点；(3)如何控制头尾。
+在本节，就具体来看下如何手写一个`LinkedList`类，为了避免和类库中的类重名，我们将该类命名为`MyLinkedList`，为了简化表述，这里仅提供基础的`LinkedList`接口，不涉及`Collection`或`List`的方法。此时，我们需要思考几个问题：(1)如何构建链表关系；(2)如何维护链表节点；(3)如何控制头尾。
 
 #### 注
 
