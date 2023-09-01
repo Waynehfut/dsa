@@ -12,8 +12,22 @@
 ![栈的基本形态](https://raw.githubusercontent.com/Waynehfut/img/img/img/202309011001052.png)
 
 :::info 拓展阅读
-实际上栈是最早出现在计算机中的数据结构之一，在计算机内存管理中，栈是实现进程局部优先级控制最有效的办法，例如局部变量的新建和释放、局部函数的参数值等等，有兴趣可进一步阅读。
+栈是较早出现在计算机中的数据结构之一，在计算机内存管理中，栈是实现进程局部优先级控制最有效的办法，例如局部变量的新建和释放、局部函数的参数值传递等等，有兴趣可进一步阅读。[Java Heap Space vs Stack - Memory Allocation in Java | DigitalOcean](https://www.digitalocean.com/community/tutorials/java-heap-space-vs-stack-memory)
 :::
+
+## 栈 ADT
+
+在讨论了上述内容后，我们来看下栈的基本操作：
+
+| 操作方法  | 功能描述        |
+| --------- | --------------- |
+| push(x)   | 将对象 x 压入栈 |
+| pop()     | 将栈顶元素移除  |
+| getSize() | 获取栈大小      |
+| isEmpty() | 是否为空        |
+| top()     | 取栈顶          |
+
+由于栈是一个表，实际上它也和表有类似的实现方式，例如使用`ArrayList`和`LinkedList`分别实现的栈，称之为顺序栈和链栈。
 
 ## 顺序栈
 
