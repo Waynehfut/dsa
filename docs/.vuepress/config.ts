@@ -78,6 +78,7 @@ export default {
             codetabs: true,
             mermaid: true,
             mark: true,
+            
         }),
     ]
 }

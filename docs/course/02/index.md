@@ -103,9 +103,93 @@ arr = expArr;
 ![单链表](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306191700342.png)
 
 我们可以看出，每个元素都有一个直接后继 next 指向下一个元素，而最后一个元素，设置了一个标识，表示没有后继，一般是
-null。而对于链表数据操作时，进行
-数据的查找和打印数据时，和数组的操作是一致的，而对于依据下标查找时，单链表的效率显然不如数组。相对于数组来说，链表的优势主要是增删的优势更大，
-即找到相应的位置，调整 next 指向位置即可。
+null。而对于链表数据操作时，进行数据的查找和打印数据时，和数组的操作是一致的，而对于依据下标查找时，单链表的效率显然不如数组。相对于数组来说，链表的优势主要是增删的优势更大，即找到相应的位置，调整 next 指向位置即可。
+
+为此我们可以定义这样的类来说明节点
+
+```java
+public class MyNode {
+  String data;
+  MyNode next;
+}
+```
+
+而实际使用过程中，为了便于维护链表，往往我们会定义一个头结点，因此会得到这样的链表：
+
+![带头结点的链表](https://raw.githubusercontent.com/Waynehfut/img/img/img/202309071546180.png)
+
+实际使用时，我们可以这样去新建一个链表
+
+```java
+class MyNode {
+    public String data;//数据
+    public MyNode next;//默认为空
+
+    public MyNode(String data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "Current node is " + data;
+    }
+}
+
+//单链表
+
+class MySingleLinkedList {
+    //定义头结点
+    private MyNode head = new MyNode("");
+
+    public void add(MyNode node) {
+        MyNode temp = head;
+        while (true) {
+            // 找到链表的最后,就退出循环
+            if (temp.next == null) {
+                break;
+            }
+            temp = temp.next;
+        }
+        temp.next = node;
+    }
+
+    //输出链表
+    public void printList() {
+        if (head.next == null) {
+            System.out.println("链表为空");
+            return;
+        }
+        MyNode temp = head.next;
+        while (true) {
+            // 如果是链表的最后
+            if (temp == null) {
+                break;
+            }
+            System.out.println(temp);
+            temp = temp.next;
+        }
+    }
+}
+
+public class SingleLinkedListDemo {
+    public static void main(String[] args) {
+        MyNode node1 = new MyNode("壹");
+        MyNode node2 = new MyNode("贰");
+        MyNode node3 = new MyNode("弎");
+        MyNode node4 = new MyNode("肆");
+
+        MySingleLinkedList singleLinkedList = new MySingleLinkedList();
+        singleLinkedList.add(node1);
+        singleLinkedList.add(node2);
+        singleLinkedList.add(node3);
+        singleLinkedList.add(node4);
+
+        singleLinkedList.printList();
+    }
+}
+
+```
+
 
 在删除节点时，首先要找到待删除节点位置，假设为$A_2$，接着我们将$A_2$的前驱（即：$A_1$）的后继(next)
 指向$A_2$的后继，这样$A_1$和$A_2$之间链接就会断开，虽然此时$A_2$的 next 仍然指向$A_3$，但如果我们进行遍历或查找已经无法直接访问到$A_2$，
@@ -165,8 +249,7 @@ previous)，那循环链表则又可以进一步增强灵活性，我们称这�
 
 ## Java Collection 和 Iterator API
 
-在讲述的表及相关变体后，进一步我们来看下如何使用 Java
-语言进行数据结构的实现。前述提到[抽象数据类型](index.md/#抽象数据类型)
+在讲述的表及相关变体后，进一步我们来看下 Java 的实际实现。前述提到[抽象数据类型](index.md/#抽象数据类型)
 实际上定义的是数据的逻辑结构，而具体 ADT 在 Java 中如何表示，则需要利用到 Java 的 Collection API。
 
 ### Collection API 接口
