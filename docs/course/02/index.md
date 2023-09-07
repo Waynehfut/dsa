@@ -3,51 +3,6 @@
 本章主要讨论介绍最简单的数据结构：表，重点通过这个大家可能已经接触过的数据结构来介绍抽象数据类型、逻辑结构和物理结构等概念，
 并且对于这三种数据结构的基本操作进行介绍。最后结合 Java 中重要的库类`ArrayList`和`LinkedList`进一步开展实战。
 
-## 从数组开始
-
-在开始本章内容之前，我们先来看一段稍早前就已经学习过的代码。
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        System.out.println("The output is " + a[1]);
-        a[1] = 5;
-        System.out.println("The output is " + a[1]);
-    }
-}
-```
-
-这个代码定义了一个数组，先输出了数组的第二个元素，并修改了第二个元素。这就涉及到了 Java 中最基础的数据结构——数组。
-可以看出，数组中是一系列同类数据的集合，并且有其规定的次序，当然数组的可操作性是有限的，Java 中还有包括更高级的`Array`类
-来实现更高级的操作。但本质上这些数据结构都包含了一些常见基本的操作，如：增加、删除、修改等。实际上反映了 ==_物理上_== 数据如何存储。
-为了更好地理解数据结构本身的性质，我们需要在逻辑上定义相应的数据结构，这里首先引入抽象数据类型(Abstract Data Type, ADT)
-的概念。
-
-## 抽象数据类型
-
-**抽象数据类型**(Abstract Data Type, ADT)是带有一组特定操作的对象的集合，可以视作是数学层面的抽象，它并不关注特定语言算法的实现，
-而更注重相关的逻辑操作，例如增加(add)，删除(delete)，修改(modify)，查找(find)等等，常用于数据结构的表示，更多体现的是
-==_逻辑上_== 元素的组织及操作。在 Java 语言的设计中，也有类似 ADT 的实现，但是对其实现的细节进行了适当的隐藏。
-
-## 逻辑结构与物理结构
-
-在数组和抽象数据类型的介绍中，我们提到逻辑概念和物理概念，这两者实际上对应了计算机在数据存储时的逻辑结构与物理结构(
-物理结构也称存储结构)。 其中，逻辑结构反应的是数据的逻辑组成，是具体操作层面的表示，而物理结构则是数据在计算机的物理介质(
-硬盘、内存)等中的存储方式，是物理层面的数据结构。 例如我们常说的数组指的就是逻辑结构，而表则包含了逻辑结构和物理结构两层含义。
-
-我们可以通过以下图来简要划分一下即将学习的数据结构中逻辑结构与物理结构，后续我们将详细介绍每种数据结构的逻辑结构，以及其对应的物理结构
-
-```mermaid
-flowchart LR
-    A[数据结构] --> B[逻辑结构]
-    A --> C[物理/存储结构]
-    B --> D[线性结构]
-    B --> E[非线性结构]
-    C --> F[顺序存储]
-    C --> G[链式存储]
-```
-
 ## 表
 
 在本课程中，我们将形式如$A_0,A_1,A_2,...,A_N$的一般数据所组成的连续数据集合的逻辑结构称之为**表(List)**[^1]，
@@ -97,10 +52,11 @@ arr = expArr;
 ### 链表
 
 链表(linked list)是一种类似链条一般的表，一般来说是有一系列节点组成，并且在内存中不必完全相连的数据所组成表集合。
-每一个节点都包含该元素值和到包含该元素后继节点的链接，一般称之为 next，最后一个节点后继指向 null。 下图即展示了一个长度为 4
-的链表，
+每一个节点都包含该元素值和到包含该元素后继节点的链接，一般称之为 next，最后一个节点后继指向 null。 下图即展示了一个长度为 4 的链表，
 
 ![单链表](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306191700342.png)
+
+#### 单链表
 
 我们可以看出，每个元素都有一个直接后继 next 指向下一个元素，而最后一个元素，设置了一个标识，表示没有后继，一般是
 null。而对于链表数据操作时，进行数据的查找和打印数据时，和数组的操作是一致的，而对于依据下标查找时，单链表的效率显然不如数组。相对于数组来说，链表的优势主要是增删的优势更大，即找到相应的位置，调整 next 指向位置即可。
@@ -190,16 +146,47 @@ public class SingleLinkedListDemo {
 
 ```
 
-
 在删除节点时，首先要找到待删除节点位置，假设为$A_2$，接着我们将$A_2$的前驱（即：$A_1$）的后继(next)
-指向$A_2$的后继，这样$A_1$和$A_2$之间链接就会断开，虽然此时$A_2$的 next 仍然指向$A_3$，但如果我们进行遍历或查找已经无法直接访问到$A_2$，
-即完成了对节点的删除，下图展示了删除节点的操作示意。
+指向$A_2$的后继，这样$A_1$和$A_2$之间链接就会断开，虽然此时$A_2$的 next 仍然指向$A_3$，但如果我们进行遍历或查找已经无法直接访问到$A_2$，即完成了对节点的删除，下图展示了删除节点的操作示意。
+
 
 ![删除节点](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306191719823.png)
 
 :::info 注意
-可以看出一个更为优雅的后续操作是，及时的释放$A_2$所占用的存储空间，由于 JVM 内建的内存回收机制，这一操作是在 Java
-内存回收过程中完成的，
+在删除节点时，一定要先将新增节点后继指向待插入位置的后继，再将待插入节点前驱的后继指向新节点，如果出现相反操作。
+:::
+
+```java
+ public void delete(int index) {
+        int tempIndex = 0;
+        if (head.next == null) {
+            System.out.println("链表为空");
+            return;
+        }
+        MyNode temp = head; //注意头结点
+        boolean exist = false;  // 是否找到要删除的节点
+        while (true) {
+            if (temp.next == null) {
+                break;
+            }
+            if (tempIndex == index - 1) { //下一个节点是目标点，考虑头结点，要减一
+                exist = true;
+                break;
+            }
+            tempIndex++;
+            temp = temp.next;
+        }
+        if (!exist) {
+            System.out.printf("未找到匹配的编号 %d \n", index);
+            return;
+        }
+        // 删除操作
+        temp.next = temp.next.next;
+    }
+```
+
+:::info 注意
+可以看出一个更为优雅的后续操作是，及时的释放$A_2$所占用的存储空间，由于 JVM 内建的内存回收机制，这一操作是在 Java 内存回收过程中完成的，
 参见[Java Garbage Collection Basics | Oracle](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html)
 而对于
 C/C++语言而言，则需要手动删除节点，参见[C++ Program for Deleting a Node in a Linked List | Geeksforgeeks.org](https://www.geeksforgeeks.org/cpp-program-for-deleting-a-node-in-a-linked-list/)
@@ -211,9 +198,40 @@ C/C++语言而言，则需要手动删除节点，参见[C++ Program for Deletin
 
 ![增加节点](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306191739876.png)
 
-:::info 注意
-在删除节点时，一定要先将新增节点后继指向待插入位置的后继，再将待插入节点前驱的后继指向新节点，如果出现相反操作。
-:::
+
+```java
+public void insert(MyNode node, int index) {
+        // 由于 head 变量不能动，动了就无法从头遍历了，使用辅助变量来完成我们的添加
+        MyNode temp = head;
+        int tempIndex = 0;
+        boolean exist = false;  // 添加的节点是否已经在链表中存在
+        while (true) {
+            if (temp.next == null) {
+                // 如果是链表尾，则跳出循环
+                break;
+            }
+            // 如果他们相等，则表示该位置应该插入节点
+            if (tempIndex == index - 1) {
+                exist = true;
+                break;
+            }
+            // 没找到，则后移 temp ，继续寻找
+            temp = temp.next;
+            tempIndex++;
+        }
+
+        if (!exist) {
+            System.out.printf("标号%d位置无法插入元素 \n", index);
+            return;
+        }
+        // 把节点插入到 temp 和 temp.next 之间
+        // temp  ->  node  -> temp.next
+        node.next = temp.next;
+        temp.next = node;
+    }
+```
+
+
 
 #### 循环链表
 
