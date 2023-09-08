@@ -55,29 +55,17 @@ public class ArrayStack {
         stack = new int[maxSize];
     }
 
-    /**
-     * 是否已满
-     *
-     * @return
-     */
+    //是否已满
     public boolean isFull() {
         return maxSize - 1 == top;
     }
 
-    /**
-     * 是否为空
-     *
-     * @return
-     */
+    //是否为空
     public boolean isEmpty() {
         return top == -1;
     }
 
-    /**
-     * 入栈
-     *
-     * @param value
-     */
+    //入栈
     public void push(int value) {
         if (isFull()) {
             System.out.println("栈已满");
@@ -86,21 +74,15 @@ public class ArrayStack {
         stack[++top] = value;
     }
 
-    /**
-     * 出栈
-     *
-     * @return
-     */
+    //出栈
     public int pop() {
         if (isEmpty()) {
             throw new RuntimeException("栈中无数据");
         }
         return stack[top--];
     }
-
-    /**
-     * 显示栈中数据，从栈顶开始显示，也就是按出栈的顺序显示
-     */
+    
+    //打印栈信息
     public void print() {
         if (isEmpty()) {
             System.out.println("栈中无数据");
@@ -126,29 +108,17 @@ public class LinkedListStack {
         this.maxSize = maxSize;
     }
 
-    /**
-     * 是否已满
-     *
-     * @return
-     */
+    //是否已满
     public boolean isFull() {
         return size == maxSize;
     }
 
-    /**
-     * 是否为空
-     *
-     * @return
-     */
+    //是否为空
     public boolean isEmpty() {
         return size == 0;
     }
 
-    /**
-     * 入栈
-     *
-     * @param value
-     */
+    //入栈
     public void push(int value) {
         if (isFull()) {
             System.out.println("栈已满");
@@ -161,12 +131,7 @@ public class LinkedListStack {
         size++;
     }
 
-
-    /**
-     * 出栈
-     *
-     * @return
-     */
+    //出栈
     public int pop() {
         if (isEmpty()) {
             throw new RuntimeException("栈已空");
@@ -178,9 +143,7 @@ public class LinkedListStack {
         return temp.value;
     }
 
-    /**
-     * 显示栈中数据，从栈顶开始显示，也就是按出栈的顺序显示
-     */
+    //打印栈信息
     public void print() {
         if (isEmpty()) {
             System.out.println("栈已空");
@@ -211,10 +174,12 @@ class Node {
 }
 ```
 
+## Java Stack API
+
 ## 栈的应用
 
-那有了栈以后，我们就可以利用它完成前述的工作了，比如完成一个计算器的核心计算逻辑。
-例如，我们计算：
+在熟悉了栈以后，我们就可以利用它完成许多复杂的工作了，例如完成一个计算器的核心计算逻辑。
+假设，我们需要计算：
 $$2*5+6-5*(8-3)=-9$$
 在计算器里，我们输入的顺序应当是：
 ![计算器计算](https://raw.githubusercontent.com/Waynehfut/img/img/img/202309011706838.png)
@@ -275,16 +240,15 @@ import java.util.Stack;
 public class InfixToSuffix {
     public static void main(String[] args) {
         InfixToSuffix infixToSuffix = new InfixToSuffix();
-        // 目标：1+((2+3)*4)-5  转为 1 2 3 + 4 * + 5 -
+        // 目标：1+((2+3)*4)-5 转为 1 2 3 + 4 * + 5 -
         // 1. 将中缀表达式转成 List，方便在后续操作中获取数据
         String infixExpression = "1+((2+3)*4)-5";
         List<String> infixList = infixToSuffix.infix2List(infixExpression);
         System.out.println(infixList); // [1, +, (, (, 2, +, 3, ), *, 4, ), -, 5]
         // 2. 将中缀表达式转成后缀表达式
         ArrayList<String> suffixList = infixToSuffix.infixList2SuffixList(infixList);
-       System.out.println(suffixList); // [1, 2, 3, +, 4, *, +, 5, -]
+        System.out.println(suffixList); // [1, 2, 3, +, 4, *, +, 5, -]
     }
-
 
     /**
      * 将中缀表达式解析成单个元素的 List，
@@ -361,7 +325,7 @@ public class InfixToSuffix {
                 // 如果 s1 为空，或则栈顶运算符为 （，则压入符号栈 s1
                 // 如果优先级比栈顶运算符 高，则压入符号栈 s1,否则，否则将 s1 栈顶的运算符弹出，压入 s2 中
                 // 上面两句话，转换成下面的描述
-                // 上面如果  s1 栈顶符号优先级比 当前符号高，则弹出加入到 s2 中。
+                // 上面如果 s1 栈顶符号优先级比 当前符号高，则弹出加入到 s2 中。
                 // 因为：如果栈顶符号是 （ 返回优先级为 -1.比当前符号低，则不会走该方法
                 while (!s1.isEmpty() && priority(s1.peek().charAt(0)) >= priority(item.charAt(0))) {
                     s2.add(s1.pop());
@@ -395,11 +359,9 @@ public class InfixToSuffix {
         }
     }
 }
-
 ```
 
 :::
 
 ### 表达式合规检验
 
-## Java Stack API
