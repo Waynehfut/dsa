@@ -25,7 +25,7 @@
 顺序表又称顺序存储结构，专门用以存储一对一的数据。在是表这一逻辑结构在物理存储上的一种形式，所存储的应是一整块内存空间中的有次序的数据。
 一般来说，顺序表的内存分配应当是连续的，因此在物理结构上是有连续次序的，因此，称之为顺序表。
 
-![顺序表示意](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306141716070.png)
+![顺序表示意](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202306141716070.png)
 
 :::info 注意
 对于顺序表这个概念，在部分的以 Java 为编码语言教材中并没有刻意强调，与 C/C++ 等语言相比，由于 Java
@@ -54,7 +54,7 @@ arr = expArr;
 链表(linked list)是一种类似链条一般的表，一般来说是有一系列节点组成，并且在内存中不必完全相连的数据所组成表集合。
 每一个节点都包含该元素值和到包含该元素后继节点的链接，一般称之为 next，最后一个节点后继指向 null。 下图即展示了一个长度为 4 的链表，
 
-![单链表](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306191700342.png)
+![单链表](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202306191700342.png)
 
 #### 单链表
 
@@ -72,7 +72,7 @@ public class MyNode {
 
 而实际使用过程中，为了便于维护链表，往往我们会定义一个头结点，因此会得到这样的链表：
 
-![带头结点的链表](https://raw.githubusercontent.com/Waynehfut/img/img/img/202309071546180.png)
+![带头结点的链表](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202309071546180.png)
 
 实际使用时，我们可以这样去新建一个链表
 
@@ -150,7 +150,7 @@ public class SingleLinkedListDemo {
 指向$A_2$的后继，这样$A_1$和$A_2$之间链接就会断开，虽然此时$A_2$的 next 仍然指向$A_3$，但如果我们进行遍历或查找已经无法直接访问到$A_2$，即完成了对节点的删除，下图展示了删除节点的操作示意。
 
 
-![删除节点](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306191719823.png)
+![删除节点](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202306191719823.png)
 
 :::info 注意
 在删除节点时，一定要先将新增节点后继指向待插入位置的后继，再将待插入节点前驱的后继指向新节点，如果出现相反操作。
@@ -196,7 +196,7 @@ C/C++语言而言，则需要手动删除节点，参见[C++ Program for Deletin
 (next)指向待插入位置的后继，其次将待插入位置的之前元素的后继(next)指向新的节点，这样就完成了节点的新增，且自动的删除了原有链表之间的链接，
 下图展示了增加节点的操作示意。
 
-![增加节点](https://raw.githubusercontent.com/Waynehfut/img/img/img/202306191739876.png)
+![增加节点](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202306191739876.png)
 
 
 ```java
@@ -239,17 +239,17 @@ public void insert(MyNode node, int index) {
 ::: warning 问题 2.1: 约瑟夫环问题
 已知$n$个人（分别用编号$1,2,3,...,n$表示）围坐在一张圆桌周围，从编号为$k$的人开始顺时针报数，数到$m$
 的那个人出列；他的下一个人又从$1$开始，还是顺时针开始报数，数到$m$的那个人又出列；依次重复下去，直到圆桌上剩余一个人。
-![约瑟夫环](https://raw.githubusercontent.com/Waynehfut/img/img/img/202308071031389.png)
+![约瑟夫环](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202308071031389.png)
 :::
 
 如果我们还是用之前的单链表进行问题的解决，将面临着多次修改起始节点或重新声明变量的操作。而我们只需要稍微对单链表做一点修改，即将头与尾相连，即可很快的解决这个问题，这样的链表称之为循环链表(
 circular linked list)。
 
-![循环链表](https://raw.githubusercontent.com/Waynehfut/img/img/img/202308071046202.png)
+![循环链表](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202308071046202.png)
 
 循环链表与单链表最大的区别在于，循环链表的尾节点指向的不是终止符，而是链表的"头结点"。需要注意的是，在遍历循环链表等情况时，还需要对循环链表增加一个头结点标识。
 
-![增加了头结点的循环链表](https://raw.githubusercontent.com/Waynehfut/img/img/img/202308071051592.png)
+![增加了头结点的循环链表](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202308071051592.png)
 
 那对于问题 2.1 的解决则简单的多。
 
@@ -259,11 +259,11 @@ circular linked list)。
 做一个调整，每次报数都和上次的顺序相反，那循环链表的就难以适用了。为了知晓不同方向的前后关系，可以考虑的一种方式是，为每个节点做个前驱链接 (
 previous)，那循环链表则又可以进一步增强灵活性，我们称这样的链表为双向循环链表。当然，也可以为单链表增加这样的前驱指向，则可以得到双向链表。
 
-![双向链表](https://raw.githubusercontent.com/Waynehfut/img/img/img/202308071125423.png)
+![双向链表](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202308071125423.png)
 
 需要注意的是，双向链表同样需要指定截止符，即头结点的前驱为空，尾结点的后继为空。如果是双向循环链表，则需要将头尾链表全部链接起来。
 
-![双向循环链表](https://raw.githubusercontent.com/Waynehfut/img/img/img/202308071127350.png)
+![双向循环链表](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202308071127350.png)
 
 ## Java Collection 和 Iterator API
 

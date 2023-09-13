@@ -2,14 +2,14 @@
 
 当你在计算机中启动计算器程序，并按下计算的公式时，你是否想过，`1+2=3`是如何计算的？
 
-![计算器](https://raw.githubusercontent.com/Waynehfut/img/img/img/202309010943297.png)
+![计算器](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202309010943297.png)
 
 当我们在浏览网页时，浏览器是怎么记得我们上一步浏览了那个页面呢？
 
-![浏览器历史记录](https://raw.githubusercontent.com/Waynehfut/img/img/img/202309010941772.png)
+![浏览器历史记录](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202309010941772.png)
 
 这一切都需要用到我们本章的内容，为了实现上述需求，有关算法专家设计了称之为 **栈(Stack)** 的数据结构。栈是一类特殊的表，它是限定了仅在表尾进行插入或删除的表。其中加入数据称之为入栈(Push)，出栈称之为(Pop)，它的头尾也有了特殊的别称，执行增删操作的称之为栈顶(Top)，最底层的数据称之为栈底(Bottom)，如果没有数据存储，那这个栈称之为空栈。需要注意的是，栈只有栈顶事可以访存的，那也就意味着先进入到栈中的数据是被“压”在最低端，是一个 **后进先出(Last In First Out, LIFO)** 的结构。
-![栈的基本形态](https://raw.githubusercontent.com/Waynehfut/img/img/img/202309011001052.png)
+![栈的基本形态](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202309011001052.png)
 
 :::info 拓展阅读
 栈是较早出现在计算机中的数据结构之一，在计算机内存管理中，栈是实现进程局部优先级控制最有效的办法，例如局部变量的新建和释放、局部函数的参数值传递等等，有兴趣可进一步阅读。[Java Heap Space vs Stack - Memory Allocation in Java | DigitalOcean](https://www.digitalocean.com/community/tutorials/java-heap-space-vs-stack-memory)
@@ -180,11 +180,11 @@ class Node {
 假设，我们需要计算：
 $$2*5+6-5*(8-3)=-9$$
 在计算器里，我们输入的顺序应当是：
-![计算器计算](https://raw.githubusercontent.com/Waynehfut/img/img/img/202309011706838.png)
+![计算器计算](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202309011706838.png)
 但是我们按照计算优先级规则，实际上是先计算`2*5=10`后,计算`10+6=16`后，再计算`8-3=5`，接着计算`5*5=25`,最后`16-25=-9`的，如果我们先把相关表达式放在右侧，如果我们将上述表达式中的数字在前，运算符号在后的顺序排列出来的话，就可以得到`2,5,*,6,+,5,8,3,-,*,-`，再把这些字符按顺序放在左侧。那这和栈又有什么关系呢？
-![栈使用情况](https://raw.githubusercontent.com/Waynehfut/img/img/img/202309061631885.png)
+![栈使用情况](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202309061631885.png)
 我们可以尝试着将这些字符按顺序放到栈里，并规定每次遇到符号的就是就将栈顶的前两个数字按照先右后左的顺序进行运算，并将运算后的结果再放回栈中，再看看会发生什么。
-![公式的栈运算](https://raw.githubusercontent.com/Waynehfut/img/img/img/202309061624118.gif)
+![公式的栈运算](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202309061624118.gif)
 通过上述动图，我们可以看到每次栈中遇到计算符号时，所进行的运算和我们实际的运算先后顺序是完全一致的，那只要我们按上述字符的顺序将表达式输入栈，就可以让计算机来为我们处理表达式了，这个特殊的字符串顺序记法称之为后缀记法，对应的表达式字符串称之为**后缀表达式**。相应的，原始的表达式称之为**中缀表达式**。
 
 :::info 后缀表达式的优势
@@ -373,5 +373,5 @@ public class InfixToSuffix {
 
 :::info 参见 Java Stack API
 [Class Stack\<E\> | Oracle.com](https://docs.oracle.com/javase/8/docs/api/java/util/Stack.html)自 Java 1.0 版本就已经进入了 JDK 中，但是其方法存在大量的继承于`Vector`的`synchronized`方法锁，因此不再被官方推荐。
-![Stack API不被推荐](https://raw.githubusercontent.com/Waynehfut/img/img/img/202309080926200.png)
+![Stack API不被推荐](https://cdn.jsdelivr.net/gh/waynehfut/img@img/img/202309080926200.png)
 :::
