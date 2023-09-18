@@ -117,6 +117,40 @@ public class Person {
 
 ```
 
+诸如**接口**（Interface）等方法也在Java中常常使用:
+定义接口
+```java
+/* 定义接口 : Animal.java */
+interface Animal {
+   public void eat();
+   public void travel();
+}
+```
+使用接口
+```java
+/* 文件名 : MammalInt.java */
+public class MammalInt implements Animal{
+ 
+   public void eat(){
+      System.out.println("Mammal eats");
+   }
+ 
+   public void travel(){
+      System.out.println("Mammal travels");
+   } 
+ 
+   public int noOfLegs(){
+      return 0;
+   }
+ 
+   public static void main(String args[]){
+      MammalInt m = new MammalInt();
+      m.eat();
+      m.travel();
+   }
+}
+```
+
 ### 递归
 
 在学习《程序设计基础》时，可能会有一道经典的题目供大家思考，即：
