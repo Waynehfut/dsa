@@ -49,10 +49,11 @@ footer: <p>  MIT Licensed | Copyright © 2023-present by
 ## 参考书
 
 1. Weiss,Mark Allen 著, 冯舜玺 译.[数据结构与算法分析：Java语言描述](https://book.douban.com/subject/3351237/).中国:机械工业出版社,2016.
-2. 邓俊辉.[数据结构与算法(Java语言描述)](https://book.douban.com/subject/1506064/).中国:机械工业出版社,2006.
-3. Thomas H.Cormen 等著, 殷建平等译, [算法导论](https://book.douban.com/subject/20432061/)，中国:机械工业出版社, 2012.
-4. 严蔚敏, 吴伟民.[数据结构: C语言版](https://book.douban.com/subject/24699581/).中国:清华大学出版社,2012.
-5. Weiss,Mark Allen 著, 冯舜玺 译.[数据结构与算法分析 : C语言描述](https://book.douban.com/subject/1139426/). 中国:机械工业出版社,2006.
+2. 李春葆 等著. [数据结构教程（Java语言描述)](https://wqbook.wqxuetang.com/book/3219618). 中国:清华大学出版社, 2020.
+3. 邓俊辉.[数据结构与算法(Java语言描述)](https://book.douban.com/subject/1506064/).中国:机械工业出版社,2006.
+4. Thomas H.Cormen 等著, 殷建平等译, [算法导论](https://book.douban.com/subject/20432061/)，中国:机械工业出版社, 2012.
+5. 严蔚敏, 吴伟民.[数据结构: C语言版](https://book.douban.com/subject/24699581/).中国:清华大学出版社,2012.
+6. Weiss,Mark Allen 著, 冯舜玺 译.[数据结构与算法分析 : C语言描述](https://book.douban.com/subject/1139426/). 中国:机械工业出版社,2006.
 
 ## 致谢
 
