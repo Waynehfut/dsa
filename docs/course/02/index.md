@@ -13,12 +13,28 @@
 
 ### 表 ADT
 
-| 操作方法        | 功能描述                |
-| --------------- | ----------------------- |
-| makeEmpty()     | 清空列表                |
-| find(x)         | 查找元素 x              |
-| insert(x,index) | 在指定 index 插入元素 x |
-| remove(x)       | 删除元素 x              |
+```java
+ADT List
+{
+数据对象：
+    D={ai | 0≤i≤n-1，n≥0，ai为E类型}  //E是用户指定的类型
+数据关系：
+    r={<ai，ai+1> | ai，ai+1∈D，i=0，…，n-2}
+基本运算（11个）：
+    void initList(E [] a)：由a数组建立线性表的相应存储结构。
+    void add(E e)：将元素e添加到线性表末尾。
+    int size()：求线性表的长度。
+    void setSize(int nlen)：设置线性表的长度为nlen。
+    E getElem(int i)：求线性表中序号为i的元素。
+    void setElem(int i，E e)：设置线性表中序号i的元素为e。
+    int getNo(E e)：求线性表中第一个值为e的元素的序号。
+    void swap(int i，int j)：交换线性表中序号i和序号j的元素。
+    void insert(int i，E e)：在线性表中插入数据元素e作为第i个元素。
+    void delete(int i)：在线性表中删除第i个数据元素。
+    String toString()：将线性表转换为字符串。
+}
+
+```
 
 ### 顺序表
 
@@ -347,38 +363,38 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
     private int theSize;
     private AnyType[] theItems;
 
-    public MyArrayList() {
+    public MyArrayList() {//初始化
         doClear();
     }
 
-    public void clear() {
+    public void clear() {//清空
         doClear();
     }
 
-    private void doClear() {
+    private void doClear() {//清空具体操作
         theSize = 0;
         ensureCapacity(DEFAULT_CAPACITY);
     }
 
-    public int size() {
+    public int size() {//容积大小
         return theSize;
     }
 
-    public boolean isEmpty() {
+    public boolean isEmpty() {//是否为空
         return size() == 0;
     }
 
-    public void trimToSize() {
+    public void trimToSize() {//是否有空间
         ensureCapacity(size());
     }
 
-    public AnyType get(int idx) {
+    public AnyType get(int idx) {//获取指定下标数据
         if (idx < 0 || idx >= size())
             throw new ArrayIndexOutOfBoundsException();
         return theItems[idx];
     }
 
-    public AnyType set(int idx, AnyType newVal) {
+    public AnyType set(int idx, AnyType newVal) {//设置指定下标数据
         if (idx < 0 || idx >= size())
             throw new ArrayIndexOutOfBoundsException();
         AnyType old = theItems[idx];
@@ -386,7 +402,7 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
         return old;
     }
 
-    public void ensureCapacity(int newCapacity) {
+    public void ensureCapacity(int newCapacity) {//确定剩余空间是否还有足够空间
         if (newCapacity < theSize)
             return;
         AnyType[] old = theItems;
@@ -395,12 +411,12 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
             theItems[i] = old[i];
     }
 
-    public boolean add(AnyType x) {
+    public boolean add(AnyType x) {//追加数据
         add(size(), x);
         return true;
     }
 
-    public void add(int idx, AnyType x) {
+    public void add(int idx, AnyType x) {//指定位置插入数据
         if (theItems.length == size())
             ensureCapacity(size() * 2 + 1);
         for (int i = theSize; i > idx; i--)
@@ -409,7 +425,7 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
         theSize++;
     }
 
-    public AnyType remove(int idx) {
+    public AnyType remove(int idx) {//移除数据
         AnyType removeItem = theItems[idx];
         for (int i = idx; i < size() - 1; i++)
             theItems[i] = theItems[i + 1];
@@ -417,11 +433,11 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
         return removeItem;
     }
 
-    public java.util.Iterator<AnyType> iterator() {
+    public java.util.Iterator<AnyType> iterator() {//迭代器
         return new ArrayListIterator();
     }
 
-    private class ArrayListIterator implements java.util.Iterator<AnyType> {
+    private class ArrayListIterator implements java.util.Iterator<AnyType> {//继承的迭代器实现
         private int current = 0;
 
         public boolean hasNext() {
